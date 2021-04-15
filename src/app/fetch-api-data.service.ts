@@ -22,9 +22,9 @@ export class UserRegistrationService {
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    // route for registering is "/register"
+    // route for registering is "/users"
     return this.http
-      .post(apiUrl + 'register', userDetails)
+      .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
