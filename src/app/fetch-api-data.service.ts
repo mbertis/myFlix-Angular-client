@@ -107,10 +107,10 @@ export class GetAllMoviesService {
 export class GetOneMovieService {
   constructor(private http: HttpClient) {}
 
-  getOneMovie(): Observable<any> {
+  getOneMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'movies/:movieId', {
+      .get(apiUrl + 'movies/${id}', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -272,12 +272,11 @@ export class GetFavoriteMoviesService {
 export class AddFavoriteMovieService {
   constructor(private http: HttpClient) {}
 
-  addFavoriteMovie(): Observable<any> {
+  addFavoriteMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
-    // another instance of movieId vs movie_id
     return this.http
-      .post(apiUrl + `users/${user}/movies/:movieId`, {
+      .post(apiUrl + `users/${user}/Movies/${id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -375,12 +374,11 @@ export class DeleteUserService {
 export class RemoveFavoriteMovieService {
   constructor(private http: HttpClient) {}
 
-  removeFavoriteMovie(): Observable<any> {
+  removeFavoriteMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
-    // another route containing movieId
     return this.http
-      .delete(apiUrl + `users/${user}/Movies/:movieId`, {
+      .delete(apiUrl + `users/${user}/Movies/${id}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
