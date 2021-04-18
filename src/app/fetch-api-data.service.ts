@@ -49,9 +49,8 @@ export class UserLoginService {
 
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
-    // route for login is "/"
     return this.http
-      .post(apiUrl, userDetails)
+      .post(apiUrl + "login", userDetails)
       .pipe(catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse): any {
