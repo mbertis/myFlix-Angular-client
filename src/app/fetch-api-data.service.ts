@@ -206,8 +206,9 @@ export class GetUserService {
 
   getUser(): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem("user");
     return this.http
-      .get(apiUrl + 'users/', {
+      .get(apiUrl + `users/${user}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -304,11 +305,11 @@ export class AddFavoriteMovieService {
 export class UpdateUserService {
   constructor(private http: HttpClient) {}
 
-  updateUser(): Observable<any> {
+  updateUser(userDetails: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .put(apiUrl + `users/${user}`, {
+      .put(apiUrl + `users/${user}`, userDetails, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
