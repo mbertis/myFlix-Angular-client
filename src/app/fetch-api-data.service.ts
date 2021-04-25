@@ -74,9 +74,8 @@ export class GetAllMoviesService {
 
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
-    // route for movies is "/"
     return this.http
-      .get(apiUrl, {
+      .get(apiUrl + "movies", {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
