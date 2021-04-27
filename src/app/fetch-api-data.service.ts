@@ -108,7 +108,7 @@ export class GetOneMovieService {
   getOneMovie(id: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'movies/${id}', {
+      .get(apiUrl + 'Movies/${id}', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -240,8 +240,9 @@ export class GetFavoriteMoviesService {
 
   getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem("user");
     return this.http
-      .get(apiUrl + 'users/', {
+      .get(apiUrl + `users/${user}/Movies/`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -275,7 +276,7 @@ export class AddFavoriteMovieService {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
     return this.http
-      .post(apiUrl + `users/${user}/Movies/${id}`, {
+      .post(apiUrl + `users/${user}/Movies/${id}`, id, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),

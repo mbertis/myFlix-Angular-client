@@ -8,24 +8,34 @@
       <img src={{movie.ImagePath}} alt= {{movie.Title}} />
       <mat-card-actions>
           <button
+          mat-button
+          color="primary"
+          (click)="showDetailsDialog(movie.Title, movie.ImagePath, movie.Description, movie.Director.name, movie.Genre.name)"
+          >
+          Details
+          </button>
+          <button
               mat-button
               color="primary"
+              (click)="showGenreDialog(movie.Genre.Name, movie.Genre.Description)"
           >
               Genre
           </button>
           <button
               mat-button
               color="primary"
+              (click)="showDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birth, movie.Director.Death)"
           >
               Director
           </button>
           <button
-              mat-button
+              mat-icon-button
               color="primary"
+              (click)="addFavorite(movie._id, movie.Title)"
+              color="warn"
           >
-              Synopsis
-          </button>
           <mat-icon>favorite_border</mat-icon>
+          </button>
       </mat-card-actions>
   </mat-card>
 </div>
