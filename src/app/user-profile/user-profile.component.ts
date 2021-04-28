@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit {
   // returns a list of all movies and calls filterFavorites() function
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
-      this.movies = resp;
+      this.user = resp;
       this.getMovies();
     });
   }
