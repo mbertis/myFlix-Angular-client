@@ -11,13 +11,14 @@ body {
   justify-content: center;
   align-items: center;
   padding: 100px;
-  background-color: #E6E6FA;
 }
 
 .welcome-buttons {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: #EA80FC;
+  color: black;
 }
 
 h1 {
@@ -25,6 +26,7 @@ h1 {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  color: #F3E5F5;
 }
 
 button {

@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-.body {
-  background-image: linear-gradient(to bottom right, #cfd8dc, #689faf, #2c9aba);
-}
-
 .user-profile {
   display: flex;
   float: right;
@@ -12,7 +8,6 @@
 }
 
 .profile-info {
-  background-color: #E6E6FA;
   font-family: 'Ubuntu', sans-serif;
   width: 347px;
   margin-right: 35px;
@@ -49,9 +44,9 @@ hr {
 
 .title {
   font-family: 'Ubuntu', sans-serif;
-  -webkit-text-stroke: 1px black;
   text-align: center;
   padding-top: 25px;
+  color: #F3E5F5;
 }
 
 .favorite {
