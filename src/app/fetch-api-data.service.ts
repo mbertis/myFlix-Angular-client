@@ -426,3 +426,10 @@ export class RemoveFavoriteMovieService {
     return throwError('Something bad happened; please try again later.');
   }
 }
+
+/**
+ * This is necessary to prevent errors due to the "import { FetchApiDataService }..." in fetch-api-data.servic.spec.ts file
+ */
+export class FetchApiDataService {
+  constructor() {}
+}
