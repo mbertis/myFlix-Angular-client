@@ -8,10 +8,14 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// Declaring the api url that will provide data for the client app
+/**
+ * Declaring the api url that will provide data for the client app
+ */
 const apiUrl = 'https://madison-myflix.herokuapp.com/';
 
-// User Registration Service
+/**
+ * Allows new user to register
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -40,7 +44,9 @@ export class UserRegistrationService {
   }
 }
 
-// User Login Service
+/**
+ * Allows existing users to log in
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -50,7 +56,7 @@ export class UserLoginService {
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http
-      .post(apiUrl + "login", userDetails)
+      .post(apiUrl + 'login', userDetails)
       .pipe(catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse): any {
@@ -65,7 +71,9 @@ export class UserLoginService {
   }
 }
 
-// Get All Movies
+/**
+ * Gets all movies and returns them as an array of objects
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -75,7 +83,7 @@ export class GetAllMoviesService {
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + "movies", {
+      .get(apiUrl + 'movies', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -98,7 +106,9 @@ export class GetAllMoviesService {
   }
 }
 
-// Get One Movie
+/**
+ * Gets one movie by movie._id
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -131,7 +141,9 @@ export class GetOneMovieService {
   }
 }
 
-// Get Director
+/**
+ * Gets director object by director name
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -164,7 +176,9 @@ export class GetDirectorService {
   }
 }
 
-// Get Genre
+/**
+ * Gets genre object by genre name
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -197,7 +211,9 @@ export class GetGenreService {
   }
 }
 
-// Get User
+/**
+ * Gets user by username
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -206,7 +222,7 @@ export class GetUserService {
 
   getUser(): Observable<any> {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     return this.http
       .get(apiUrl + `users/${user}`, {
         headers: new HttpHeaders({
@@ -231,7 +247,9 @@ export class GetUserService {
   }
 }
 
-// Get Favorite Movies for User
+/**
+ * Gets user's favorite moves as an array
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -240,7 +258,7 @@ export class GetFavoriteMoviesService {
 
   getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     return this.http
       .get(apiUrl + `users/${user}/Movies/`, {
         headers: new HttpHeaders({
@@ -265,7 +283,9 @@ export class GetFavoriteMoviesService {
   }
 }
 
-// Add a Movie to Favorites
+/**
+ * Adds a movie to a user's list of favorites
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -299,7 +319,9 @@ export class AddFavoriteMovieService {
   }
 }
 
-// Update User
+/**
+ * Updates user info
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -333,7 +355,9 @@ export class UpdateUserService {
   }
 }
 
-// Delete User
+/**
+ * Deletes a user from database
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -367,7 +391,9 @@ export class DeleteUserService {
   }
 }
 
-// Remove Favorite Movie From List
+/**
+ * Removes a movie from a user's list of favorites
+ */
 @Injectable({
   providedIn: 'root',
 })

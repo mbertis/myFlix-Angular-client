@@ -27,10 +27,16 @@ export class MovieCardComponent implements OnInit {
     public buttonModule: MatButtonModule
   ) {}
 
+  /**
+   * getMovies() is run on initialization
+   */
   ngOnInit(): void {
     this.getMovies();
   }
 
+  /**
+   * Gets a list of movies and stores them in an array
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -39,6 +45,13 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens director dialog with info about director (button click on Movie Card)
+   * @param name
+   * @param bio
+   * @param birth
+   * @param death
+   */
   showDirectorDialog(
     name: string,
     bio: string,
@@ -51,6 +64,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens dialog with info about genre (button click on Movie Card)
+   * @param name
+   * @param description
+   */
   showGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreDialogComponent, {
       data: { name, description },
@@ -58,6 +76,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Allows users to add a movie to their list of favorites
+   * Favorites list is viewable on user's profile page
+   * @param id
+   * @param title
+   */
   addFavorite(id: string, title: string): void {
     this.fetchApiData2.addFavoriteMovie(id).subscribe(() => {
       this.snackBar.open(`${title} has been added to your favorites!`, 'OK', {
@@ -66,6 +90,14 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens dialog with info about the movie, including image
+   * @param title
+   * @param imagepath
+   * @param description
+   * @param director
+   * @param genre
+   */
   showDetailsDialog(
     title: string,
     imagepath: string,

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserLoginService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
@@ -16,11 +16,15 @@ export class UserLoginFormComponent implements OnInit {
     public fetchApiData: UserLoginService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
-    public router: Router,
+    public router: Router
   ) {}
 
   ngOnInit(): void {}
 
+  /**
+   * Logs in user and keeps user and token in Local Storage
+   * Password is hashed - never stored directly in Local Storage
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (result) => {
@@ -31,7 +35,7 @@ export class UserLoginFormComponent implements OnInit {
         this.snackBar.open('Login Successful!', 'OK', {
           duration: 2000,
         });
-        this.router.navigate(["movies"]);
+        this.router.navigate(['movies']);
       },
       (result) => {
         console.log(result);
